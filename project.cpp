@@ -7,7 +7,7 @@ struct date{
     int month;
     int day;
     int year;
-    };
+};
 struct account {
     int number;
     char name[100];
@@ -17,7 +17,9 @@ struct account {
     char cityAddr[100];
     char accType;
     float oldBalance;
-    float newBalance;
+    float newBalance; 
+
+
     float payment;
     date lastPayment;
 };
