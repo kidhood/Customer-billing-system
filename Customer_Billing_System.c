@@ -27,7 +27,6 @@ typedef struct HuynhVanThong{
 void Input();
 void Output();
 
-
 int main(){
     int i,n;
 	int choice;
