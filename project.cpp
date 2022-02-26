@@ -77,31 +77,30 @@ int validDate(int d, int m, int y){
     return d <= maxd;
 } 
 void inputOneAccount(AC &customerAcc){
-        printf("Enter name: ");
-        fflush(stdin); fgets(customerAcc.name, sizeof(customerAcc.name), stdin); xoaXuongDong(customerAcc.name);
-        printf("Enter account number: ");
-        scanf("%d", &customerAcc.accNum);
-        printf("Enter mobile number: ");
-        scanf("%f", &customerAcc.mobileNum);
-        printf("Enter street address: ");
-        fflush(stdin); fgets(customerAcc.streetAddr, sizeof(customerAcc.streetAddr), stdin); xoaXuongDong(customerAcc.streetAddr);
-        printf("Enter city address: ");
-        fflush(stdin); fgets(customerAcc.cityAddr, sizeof(customerAcc.cityAddr), stdin); xoaXuongDong(customerAcc.cityAddr);
-        printf("Enter previous balance: ");
-        scanf("%f", &customerAcc.oldBalance);
-        do {
-        	printf("Enter current balance: ");
-        	scanf("%f", &customerAcc.payment);
-    	} while (customerAcc.payment>customerAcc.oldBalance);
-		do{
-			printf("Enter payment date: ");
-			scanf("%d%d%d", &customerAcc.lastPayment.day,
-			&customerAcc.lastPayment.month, &customerAcc.lastPayment.year);
-			fflush(stdin);
-		}
-		while(validDate(customerAcc.lastPayment.day,
-			customerAcc.lastPayment.month, customerAcc.lastPayment.year) == 0);
-
+	printf("Enter name: ");
+	fflush(stdin); fgets(customerAcc.name, sizeof(customerAcc.name), stdin); xoaXuongDong(customerAcc.name);
+	printf("Enter account number: ");
+	scanf("%d", &customerAcc.accNum);
+	printf("Enter mobile number: ");
+	scanf("%f", &customerAcc.mobileNum);
+	printf("Enter street address: ");
+	fflush(stdin); fgets(customerAcc.streetAddr, sizeof(customerAcc.streetAddr), stdin); xoaXuongDong(customerAcc.streetAddr);
+	printf("Enter city address: ");
+	fflush(stdin); fgets(customerAcc.cityAddr, sizeof(customerAcc.cityAddr), stdin); xoaXuongDong(customerAcc.cityAddr);
+	printf("Enter previous balance: ");
+	scanf("%f", &customerAcc.oldBalance);
+	do {
+		printf("Enter current balance: ");
+		scanf("%f", &customerAcc.payment);
+	} while (customerAcc.payment>customerAcc.oldBalance);
+	do{
+		printf("Enter payment date: ");
+		scanf("%d%d%d", &customerAcc.lastPayment.day,
+		&customerAcc.lastPayment.month, &customerAcc.lastPayment.year);
+		fflush(stdin);
+	}
+	while(validDate(customerAcc.lastPayment.day,
+		customerAcc.lastPayment.month, customerAcc.lastPayment.year) == 0);
 }
 void inputAListOfAccount(AC listCustomerAcc[], int &numOfAcc){
 	printf("Enter number of accounts you want to add: ");
