@@ -21,8 +21,14 @@ struct account {
     float payment;
     date lastPayment;
 };
-int validDate(int d,int m,int y);
+ 
 typedef account AC;
+int validDate(int d,int m,int y);
+void inputOneAccount(AC &customerAcc);
+void inputAListOfAccount(AC listCustomerAcc[], int &numOfAcc);
+void outputOneCustomer (AC customerAcc);
+void outputListOfCustomer(AC listCustomerAcc[], int numOfAcc);
+void search (AC listCustomerAcc[], int numOfAcc);
 
 void xoaXuongDong(char x[]){
 	size_t len = strlen(x);
@@ -30,7 +36,46 @@ void xoaXuongDong(char x[]){
 		x[len-1]='\0';
 	}
 }
-
+int main(){
+	AC listCustomerAcc[100];
+	int numOfAcc;
+    int i,n;
+	int choice;
+	do{		
+		printf("===============================\n");
+		printf("   CUSTOMER BILLING SYSTEM:\n\n");
+		printf("\n1:    to add account on list\n");
+		printf("2:    to search customer account\n");
+		printf("3:    exit\n");
+		printf("\n================================\n");
+	    printf("\nselect what do you want to do: ");
+	    scanf("%d", &choice);
+	    switch(choice){
+        	case 1: 
+            	inputAListOfAccount(listCustomerAcc, numOfAcc);
+            	break;
+       		case 2: 
+       			search(listCustomerAcc, numOfAcc);
+            	break;
+        	case 3:
+        		break;
+        	default:
+        		printf("Please enter 1-3 option\n");
+        		break;
+    	}
+	}while(choice != 3);
+    
+}
+int validDate(int d, int m, int y){
+    int maxd = 31;
+    if(d<1|| d>31|| m<1 || m>12) return 0;
+    if(m == 4 || m == 6 || m == 9 || m == 11) maxd = 30;
+    else if(m == 2){
+        if(y % 400 == 0 || (y % 4 == 0 && y % 100 !=0)) maxd = 29;
+        else maxd = 28;
+    }   
+    return d <= maxd;
+} 
 void inputOneAccount(AC &customerAcc){
         printf("Enter name: ");
         fflush(stdin); fgets(customerAcc.name, sizeof(customerAcc.name), stdin); xoaXuongDong(customerAcc.name);
@@ -103,45 +148,4 @@ void search (AC listCustomerAcc[], int numOfAcc) {
 		}
 	}
 }
-
-int main(){
-	AC listCustomerAcc[100];
-	int numOfAcc;
-    int i,n;
-	int choice;
-	do{		
-		printf("===============================\n");
-		printf("   CUSTOMER BILLING SYSTEM:\n\n");
-		printf("\n1:    to add account on list\n");
-		printf("2:    to search customer account\n");
-		printf("3:    exit\n");
-		printf("\n================================\n");
-	    printf("\nselect what do you want to do: ");
-	    scanf("%d", &choice);
-	    switch(choice){
-        	case 1: 
-            	inputAListOfAccount(listCustomerAcc, numOfAcc);
-            	break;
-       		case 2: 
-       			search(listCustomerAcc, numOfAcc);
-            	break;
-        	case 3:
-        		break;
-        	default:
-        		printf("Please enter 1-3 option\n");
-        		break;
-    	}
-	}while(choice != 3);
-    
-}
-int validDate(int d, int m, int y){
-    int maxd = 31;
-    if(d<1|| d>31|| m<1 || m>12) return 0;
-    if(m == 4 || m == 6 || m == 9 || m == 11) maxd = 30;
-    else if(m == 2){
-        if(y % 400 == 0 || (y % 4 == 0 && y % 100 !=0)) maxd = 29;
-        else maxd = 28;
-    }   
-    return d <= maxd;
-} 
 
