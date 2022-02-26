@@ -66,6 +66,9 @@ int main(){
 	}while(choice != 3);
     
 }
+int Remove(){
+	return 0;
+}
 int validDate(int d, int m, int y){
     int maxd = 31;
     if(d<1|| d>31|| m<1 || m>12) return 0;
