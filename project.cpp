@@ -30,7 +30,7 @@ void outputOneCustomer (AC customerAcc);
 void outputListOfCustomer(AC listCustomerAcc[], int numOfAcc);
 void search (AC listCustomerAcc[], int numOfAcc);
 
-void xoaXuongDong(char x[]){
+void deleteSpace(char x[]){
 	size_t len = strlen(x);
 	if(x[len-1]=='\n'){
 		x[len-1]='\0';
@@ -78,15 +78,15 @@ int validDate(int d, int m, int y){
 } 
 void inputOneAccount(AC &customerAcc){
 	printf("Enter name: ");
-	fflush(stdin); fgets(customerAcc.name, sizeof(customerAcc.name), stdin); xoaXuongDong(customerAcc.name);
+	fflush(stdin); fgets(customerAcc.name, sizeof(customerAcc.name), stdin); deleteSpace(customerAcc.name);
 	printf("Enter account number: ");
 	scanf("%d", &customerAcc.accNum);
 	printf("Enter mobile number: ");
 	scanf("%f", &customerAcc.mobileNum);
 	printf("Enter street address: ");
-	fflush(stdin); fgets(customerAcc.streetAddr, sizeof(customerAcc.streetAddr), stdin); xoaXuongDong(customerAcc.streetAddr);
+	fflush(stdin); fgets(customerAcc.streetAddr, sizeof(customerAcc.streetAddr), stdin); deleteSpace(customerAcc.streetAddr);
 	printf("Enter city address: ");
-	fflush(stdin); fgets(customerAcc.cityAddr, sizeof(customerAcc.cityAddr), stdin); xoaXuongDong(customerAcc.cityAddr);
+	fflush(stdin); fgets(customerAcc.cityAddr, sizeof(customerAcc.cityAddr), stdin); deleteSpace(customerAcc.cityAddr);
 	printf("Enter previous balance: ");
 	scanf("%f", &customerAcc.oldBalance);
 	do {
@@ -140,7 +140,7 @@ void search (AC listCustomerAcc[], int numOfAcc) {
 	char name[100];
 	int i; 
 	printf("Enter the name: ");
-	fflush(stdin); fgets(name, sizeof(name), stdin); xoaXuongDong(name);
+	fflush(stdin); fgets(name, sizeof(name), stdin); deleteSpace(name);
 	for(i = 0; i < numOfAcc; i++) {
 		if(strcmp(listCustomerAcc[i].name, name)==0){
 			outputOneCustomer(listCustomerAcc[i]);
